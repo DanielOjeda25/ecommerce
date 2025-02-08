@@ -3,16 +3,18 @@ import Link from "next/link";
 import React from "react";
 import { initialValues, validationSchema } from "./RegisterForm.data";
 import { Auth } from "@/api";
+import { useRouter } from "next/router";
 
 const authCtrl = new Auth();
 export default function RegisterForm() {
+  const router = useRouter();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
     onSubmit: async (values) => {
       try {
         await authCtrl.register(values);
-        console.log("Usuario registrado");
+        router.push("/join/sign-in");
       } catch (error) {
         console.log(error);
       }

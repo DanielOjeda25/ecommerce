@@ -1,9 +1,16 @@
+import { useAuth } from "@/hooks";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import { CloseButton, Container } from "react-bootstrap";
 
 export default function JoinLayout({ children }) {
+  const { user } = useAuth();
+  const router = useRouter();
+  if (user) {
+    router.push("/");
+  }
   return (
     <Container fluid className="mh-100 vh-100 d-flex flex-column  p-0">
       <div className="d-flex justify-content-between align-items-center p-3 border-bottom">
