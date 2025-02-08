@@ -10,6 +10,7 @@ export default function JoinLayout({ children }) {
   const router = useRouter();
   if (user) {
     router.push("/");
+    return null;
   }
   return (
     <Container fluid className="mh-100 vh-100 d-flex flex-column  p-0">
